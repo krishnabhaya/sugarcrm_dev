@@ -463,6 +463,15 @@ class RepairAndClear
 	private function _getModuleNamePlural($module_name_singular)
 	{
 		global $beanList;
+		/*
+		 * Reset $beanList to point to the start of the array
+		 * to return correct path for the module name passed to function
+		 * and avoid calling _clearCache() for all modules everytime
+		 */
+		reset($beanList);
+		/*
+		 * End of comment
+		 */
 		while ($curr_module = current($beanList))
 		{
 			if ($curr_module == $module_name_singular)
